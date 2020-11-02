@@ -31,11 +31,16 @@ function createTask(title) {
     });
 }
 
-function updateTask(title, id) {
-    const promise = axios.put(`https://repetitora.net/api/JS/Tasks`, {
-        widgetId: 1112,
-        title: title,
-        taskId: id
+function updateTask(title, id, done) {
+    const promise = axios({
+        method: 'put',
+        url: 'https://repetitora.net/api/JS/Tasks',
+        data: {
+            widgetId: 1112,
+            title: title,
+            taskId: id,
+            done: done
+        }
     });
     return promise.then((response) => {
         return response.data;
